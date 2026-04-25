@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversor de Calificaciones</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; background-color: #f0f2f5; }
+        .container { max-width: 400px; padding: 25px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h2 { color: #333; }
+        input { padding: 10px; width: 80%; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; }
+        button { padding: 10px 20px; background-color: #6c5ce7; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #a29bfe; }
+        #resultado { margin-top: 20px; font-size: 1.2rem; font-weight: bold; color: #2d3436; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Sistema de Calificaciones</h2>
+    <form id="gradeForm">
+        <label for="puntuacion">Introduce tu puntuación (0-100):</label>
+        <input type="number" id="puntuacion" min="0" max="100" placeholder="Ej. 85" required>
+        <br>
+        <button type="submit">Calcular Letra</button>
+    </form>
+
+    <div id="resultado"></div>
+</div>
+
+<script>
+    document.getElementById('gradeForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const puntos = parseInt(document.getElementById('puntuacion').value);
+        const res = document.getElementById('resultado');
+        let letra = "";
+
+        // Lógica con if, else if, else
+        if (puntos >= 90) {
+            letra = "A";
+        } else if (puntos >= 80) {
+            letra = "B";
+        } else if (puntos >= 70) {
+            letra = "C";
+        } else if (puntos >= 60) {
+            letra = "D";
+        } else {
+            letra = "F";
+        }
+
+        res.innerText = `${letra} ya que ${puntos} está entre los rangos correspondientes, por lo tanto, la calificación es ${letra}`;
+    });
+</script>
+
+</body>
+</html>
